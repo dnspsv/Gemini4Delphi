@@ -15,11 +15,56 @@ Uma classe Delphi para comunicação com a API Gemini Google AI é uma ferrament
 - Segurança e privacidade: A integração com o Gemini levanta preocupações sobre a segurança dos dados e a privacidade do usuário. 
 
 ## Considerações para a classe:
-- Método de comunicação: REST API.
-- Gerenciamento de autenticação e autorização: como lidar com chaves API e credenciais.
-- Formatação de solicitações e respostas: definir estruturas de dados para interagir com o Gemini.
-- Tratamento de erros e exceções: lida com respostas inesperadas e erros de comunicação.
-Documentação e exemplos: Informações claras e exemplos de uso para facilitar a integração.
+- Método de comunicação: API REST.
+- Gerenciamento de autenticação e autorização: Chaves API e credenciais.
+- Formatação de solicitações e respostas: Defini estruturas de dados para interagir com o Gemini.
+- Tratamento de erros e exceções: Respostas inesperadas e erros de comunicação.
+
+## Como Utilizar 
+Faça download dos aquivivos e os inclua em seu projeto.
+
+Inclua em uses a classe **UApiGemini**:
+```
+uses
+    UApiGemini;
+```
+
+Instâcie a classe e chame os métodos Exemplo: **GenerateContent** 
+```
+procedure ConsomeGeminiAPI;
+Var
+  response : String;
+  ApiGemini : TUApiGemini;
+begin
+  ApiGemini.FModel     := 'models/gemini-1.0-pro';
+  ApiGemini.FDiscovery := 'v1beta';
+  response := TratarResposta(ApiGemini.Models_GenerateContent('SEU PROMPT AQUI.'));
+end;
+```
+
+Exemplo: **Models_List** 
+```
+procedure TuFrmPrincipal.LoadModelos;
+Var
+  Dados : TClientDataSet;
+begin
+   Dados := TClientDataSet.Create(nil);
+   try
+    ApiGemini.Models_List(Dados);
+    while not Dados.Eof do
+    begin
+      comboBox.Items.Add(Dados.FieldByName('name').AsString);
+      dados.Next;
+    end;
+   finally
+     Dados.Free;
+   end;
+end;
+```
+
+## Documentação da API Gemini
+Documentação da Api [Api Gemini](https://ai.google.dev/api/rest?hl=pt-br).
+
 
 ## Conclusão:
 Uma classe Delphi para comunicação com o Gemini Google AI possui um grande potencial para revolucionar a maneira como as aplicações Delphi interagem com a inteligência artificial.
