@@ -23,13 +23,12 @@ Uma classe Delphi para comunicação com a API Gemini Google AI é uma ferrament
 ## Como Utilizar 
 Faça download dos aquivivos e os inclua em seu projeto.
 
-Inclua em uses a classe **UApiGemini**:
+Inclua em uses a classe **UApiGemini** depois basta instâciar a classe e chamar os métodos
 ```
 uses
     UApiGemini;
 ```
-
-Instâcie a classe e chame os métodos Exemplo: **GenerateContent** 
+**Exemplo: GenerateContent** 
 ```
 procedure ConsomeGeminiAPI;
 Var
@@ -42,9 +41,9 @@ begin
 end;
 ```
 
-Exemplo: **Models_List** 
+**Exemplo: Models_List** 
 ```
-procedure TuFrmPrincipal.LoadModelos;
+procedure LoadModelos;
 Var
   Dados : TClientDataSet;
 begin
